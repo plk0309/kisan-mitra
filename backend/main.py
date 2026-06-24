@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers.chat import router as chat_router
+from app.routers.diagnose import router as diagnose_router
+from app.routers.prices import router as prices_router
 
 app = FastAPI(
     title="Kisan Mitra API",
@@ -17,6 +19,8 @@ app.add_middleware(
 )
 
 app.include_router(chat_router)
+app.include_router(diagnose_router)
+app.include_router(prices_router)
 
 @app.get("/")
 def root():
